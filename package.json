@@ -68,7 +68,8 @@
     "react-router-dom": "^6.4.5",
     "react-scripts": "^5.0.1",
     "react-select": "^5.7.0",
-    "react-tag-input-component": "^2.0.2"
+    "react-tag-input-component": "^2.0.2",
+    "request": "^2.88.2"
   },
   "scripts": {
     "start": "react-scripts start",
