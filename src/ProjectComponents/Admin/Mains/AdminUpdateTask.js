@@ -16,14 +16,10 @@ import {
 } from "../../../components/card/card.jsx";
 
 const AdminUpdateTask = () => {
-  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errormessage, seterrormessage] = useState(false);
   const [successful, setsuccessfull] = useState("");
-
- 
-  
 
   const [emailid, setemail] = useState("");
 
@@ -35,7 +31,6 @@ const AdminUpdateTask = () => {
   const { id } = useParams();
   console.log(id);
 
-  
   const [clients, setclients] = useState([]);
   const [users, setusers] = useState([]);
   const [selectform, setselectform] = useState([]);
@@ -48,8 +43,7 @@ const AdminUpdateTask = () => {
   const [useroptions, setuseroptions] = useState([]);
   const [taskdata, settaskdata] = useState();
 
-
-   const [recurringtask, setrecurringtask] = useState();
+  const [recurringtask, setrecurringtask] = useState();
   const [recurropt, setrecurropt] = useState([
     { label: "No" },
     { label: "1" },
@@ -77,18 +71,14 @@ const AdminUpdateTask = () => {
     { label: "23" },
   ]);
 
-
-
-
-
-
-
   const [value, setvalue] = useState([]);
   console.log(value);
   console.log(clients);
 
   const fetchingclientdata = async () => {
-    const data = await axios.get("http://localhost:5000/api/clientall");
+    const data = await axios.get(
+      "https://coming-to-me-from-backend.onrender.com/api/clientall"
+    );
     await setclientdata(data.data);
 
     data.data.map((gg) => {
@@ -102,7 +92,9 @@ const AdminUpdateTask = () => {
   };
 
   const fetchinguserdata = async () => {
-    const data = await axios.get("http://localhost:5000/api/user/allusers");
+    const data = await axios.get(
+      "https://coming-to-me-from-backend.onrender.com/api/user/allusers"
+    );
     await setuserdata(data.data);
 
     data.data.map((gg) => {
@@ -114,15 +106,17 @@ const AdminUpdateTask = () => {
   };
 
   const fetchingupdateddata = async () => {
-    const data = await axios.get("http://localhost:5000/api/onetask/" + id);
+    const data = await axios.get(
+      "https://coming-to-me-from-backend.onrender.com/api/onetask/" + id
+    );
     await settaskdata(data.data);
 
     setclients(data.data.clients);
     setname(data.data.name);
-    setrecurringtask(data.data.recurringtask)
+    setrecurringtask(data.data.recurringtask);
     setdescription(data.data.description);
     setstatus(data.data.status);
-    setusers(data.data.users)
+    setusers(data.data.users);
   };
 
   useEffect(() => {
@@ -154,14 +148,15 @@ const AdminUpdateTask = () => {
 
       const { data } = await axios
         .post(
-          "http://localhost:5000/api/updatetasks/" + id,
+          "https://coming-to-me-from-backend.onrender.com/api/updatetasks/" +
+            id,
           {
             name,
             description,
             status,
             users,
             clients,
-            recurringtask
+            recurringtask,
           },
           config
         )
@@ -197,7 +192,8 @@ const AdminUpdateTask = () => {
 
       const { data } = await axios
         .post(
-          "http://localhost:5000/api/updatetaskfile/" + id,
+          "https://coming-to-me-from-backend.onrender.com/api/updatetaskfile/" +
+            id,
           formdata,
           config
         )
@@ -218,22 +214,17 @@ const AdminUpdateTask = () => {
     }
   };
 
-const colourStyles = {
-  control: (styles) => ({ ...styles, backgroundColor: "white" }),
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    return {
-      ...styles,
-      backgroundColor: isDisabled ? "black" : "black",
-      color: "#FFF",
-      cursor: isDisabled ? "not-allowed" : "default",
-    };
-  },
-};
-
-
-
-
-
+  const colourStyles = {
+    control: (styles) => ({ ...styles, backgroundColor: "white" }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      return {
+        ...styles,
+        backgroundColor: isDisabled ? "black" : "black",
+        color: "#FFF",
+        cursor: isDisabled ? "not-allowed" : "default",
+      };
+    },
+  };
 
   return (
     <div>

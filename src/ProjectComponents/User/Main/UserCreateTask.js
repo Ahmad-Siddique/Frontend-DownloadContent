@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Header from "../header";
 import Sidebar from "../sidebarmain";
 import { useEffect } from "react";
@@ -13,12 +13,8 @@ import {
 import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 
-
 const UserCreateTask = () => {
-
-  
   const [errormessage, seterrormessage] = useState(false);
-  
 
   const [id, setid] = useState();
   const [description, setdescription] = useState();
@@ -62,7 +58,9 @@ const UserCreateTask = () => {
   console.log(clients1);
 
   const fetchingclientdata = async () => {
-    const data = await axios.get("http://localhost:5000/api/clientall");
+    const data = await axios.get(
+      "https://coming-to-me-from-backend.onrender.com/api/clientall"
+    );
     await setclientdata(data.data);
 
     data.data.map((gg) => {
@@ -76,7 +74,9 @@ const UserCreateTask = () => {
   };
 
   const fetchinguserdata = async () => {
-    const data = await axios.get("http://localhost:5000/api/user/allusers");
+    const data = await axios.get(
+      "https://coming-to-me-from-backend.onrender.com/api/user/allusers"
+    );
     console.log("User data:", data.data);
     await setuserdata(data.data);
     console.log(data.data);
@@ -116,7 +116,7 @@ const UserCreateTask = () => {
       "Content-type": "application/json",
     };
     const data1 = await axios.post(
-      "http://localhost:5000/api/taskexist",
+      "https://coming-to-me-from-backend.onrender.com/api/taskexist",
       {
         name,
       },
@@ -182,7 +182,11 @@ const UserCreateTask = () => {
 
           console.log("form data set", formdata);
           await axios
-            .post("http://localhost:5000/api/taskregister", formdata, config)
+            .post(
+              "https://coming-to-me-from-backend.onrender.com/api/taskregister",
+              formdata,
+              config
+            )
             .then((data) => {
               console.log("Came into then");
               console.log(data.data);
@@ -203,9 +207,6 @@ const UserCreateTask = () => {
       }
     }
   };
-
-
-
 
   return (
     <div>
@@ -300,10 +301,6 @@ const UserCreateTask = () => {
               placeholder="name@example.com"
             />
 
-            
-
-           
-
             <input
               type="file"
               className="form-control mt-3"
@@ -322,6 +319,6 @@ const UserCreateTask = () => {
       </Card>
     </div>
   );
-}
+};
 
-export default UserCreateTask
+export default UserCreateTask;

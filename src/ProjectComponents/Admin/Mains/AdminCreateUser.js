@@ -39,7 +39,7 @@ const AdminCreateUser = () => {
       };
       const data = await axios
         .post(
-          "http://localhost:5000/api/user/register",
+          "https://coming-to-me-from-backend.onrender.com/api/user/register",
           {
             name,
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Header from "../header";
 import Sidebar from "../sidebarmain";
 import axios from "axios";
@@ -22,13 +22,10 @@ const AdminUpdateProfile = () => {
   const [errormessage, seterrormessage] = useState(false);
   const [successful, setsuccessfull] = useState("");
 
-
-
-
   const userdata = () => {
     const data = localStorage.getItem("adminInfo");
     const data1 = JSON.parse(data);
-    console.log(data1.email)
+    console.log(data1.email);
     setname(data1.name);
     setemail(data1.email);
     setpassword(data1.password);
@@ -39,8 +36,6 @@ const AdminUpdateProfile = () => {
   useEffect(() => {
     userdata();
   }, []);
-
-
 
   const FormSubmit = async (e) => {
     if (emailid == "" || password == "" || name == "") {
@@ -59,7 +54,7 @@ const AdminUpdateProfile = () => {
       };
       const data = await axios
         .post(
-          "http://localhost:5000/api/adminregister",
+          "https://coming-to-me-from-backend.onrender.com/api/adminregister",
           {
             name,
 

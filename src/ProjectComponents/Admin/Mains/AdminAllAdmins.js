@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../header";
 import Sidebar from "../sidebarmain";
 import { Link, useNavigate } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
 import {
@@ -12,7 +12,6 @@ import {
 } from "../../../components/card/card.jsx";
 
 const AdminAllAdmins = () => {
-
   let [admindata, setadmindata] = useState();
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
@@ -24,7 +23,9 @@ const AdminAllAdmins = () => {
   const handleShow = () => setShow(!show);
 
   const fetchingadmindata = async () => {
-    const data = await axios.get("http://localhost:5000/api/alladmins");
+    const data = await axios.get(
+      "https://coming-to-me-from-backend.onrender.com/api/alladmins"
+    );
     const data2 = localStorage.getItem("adminInfo");
     const data1 = JSON.parse(data2);
     //   console.log(data1)
@@ -42,12 +43,12 @@ const AdminAllAdmins = () => {
   };
 
   const DeleteUser = async (id) => {
-    setLoading(true)
+    setLoading(true);
     const data = await axios.post(
-      "http://localhost:5000/api/deleteadmin/" + id
+      "https://coming-to-me-from-backend.onrender.com/api/deleteadmin/" + id
     );
-    setLoading(false)
-    setsuccessfull("Admin Deleted Successfully")
+    setLoading(false);
+    setsuccessfull("Admin Deleted Successfully");
     console.log(data.data.message);
     handleShow();
   };
@@ -55,12 +56,6 @@ const AdminAllAdmins = () => {
   useEffect(() => {
     fetchingadmindata();
   }, [show]);
-
-
-
-
-
-
 
   return (
     <div>

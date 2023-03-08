@@ -25,7 +25,9 @@ const AdminAllUsers = () => {
   const handleShow = () => setShow(!show);
 
   const fetchinguserdata = async () => {
-    const data = await axios.get("http://localhost:5000/api/user/allusers");
+    const data = await axios.get(
+      "https://coming-to-me-from-backend.onrender.com/api/user/allusers"
+    );
     await setuserdata(data.data);
   };
 
@@ -35,7 +37,7 @@ const AdminAllUsers = () => {
 
   const DeleteUser = async (id) => {
     const data = await axios.post(
-      "http://localhost:5000/api/user/deleteuser/" + id
+      "https://coming-to-me-from-backend.onrender.com/api/user/deleteuser/" + id
     );
     console.log(data.data.message);
     handleShow();
@@ -117,7 +119,7 @@ const AdminAllUsers = () => {
                   <thead>
                     <tr>
                       <th className="border-top-0 pt-0 pb-2">Full Name</th>
-                      
+
                       <th className="border-top-0 pt-0 pb-2">Email</th>
                       <th className="border-top-0 pt-0 pb-2">Password</th>
                       <th className="border-top-0 pt-0 pb-2">Update</th>
@@ -132,7 +134,6 @@ const AdminAllUsers = () => {
                           <tr>
                             <td>{e.name}</td>
 
-                         
                             <td>{e.email}</td>
                             <td>{e.password}</td>
 

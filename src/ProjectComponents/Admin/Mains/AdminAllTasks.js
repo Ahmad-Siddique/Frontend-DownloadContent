@@ -32,7 +32,9 @@ const AdminAllTasks = () => {
   const handleShow = () => setShow(!show);
 
   const fetchingtaskdata = async () => {
-    const data = await axios.get("http://localhost:5000/api/alltasks");
+    const data = await axios.get(
+      "https://coming-to-me-from-backend.onrender.com/api/alltasks"
+    );
     await settaskdata1(data.data);
     await settaskdata(data.data);
     console.log("Task data");
@@ -46,7 +48,7 @@ const AdminAllTasks = () => {
   const DeleteUser = async (id) => {
     setLoading(true);
     const data = await axios.post(
-      "http://localhost:5000/api/deletetasks/" + id
+      "https://coming-to-me-from-backend.onrender.com/api/deletetasks/" + id
     );
 
     setLoading(false);
@@ -126,8 +128,6 @@ const AdminAllTasks = () => {
       );
     }
   };
-
-  
 
   return (
     <div>

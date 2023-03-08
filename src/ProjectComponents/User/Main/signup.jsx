@@ -8,8 +8,8 @@ function PagesLogin() {
   const context = useContext(AppSettings);
   const [redirect, setRedirect] = useState(false);
   const [email, setemail] = useState("");
-    const [password, setpassword] = useState("");
-    const [name,setname] =  useState("")
+  const [password, setpassword] = useState("");
+  const [name, setname] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errormessage, setErrormessage] = useState("");
@@ -45,9 +45,9 @@ function PagesLogin() {
 
       const { data } = await axios
         .post(
-          "http://localhost:5000/api/user/register",
-            {
-              name,
+          "https://coming-to-me-from-backend.onrender.com/api/user/register",
+          {
+            name,
             email,
             password,
           },

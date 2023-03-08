@@ -4,7 +4,6 @@ import { AppSettings } from "../../../config/app-settings";
 import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 
-
 function PagesLogin() {
   const context = useContext(AppSettings);
   const [redirect, setRedirect] = useState(false);
@@ -13,7 +12,7 @@ function PagesLogin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errormessage, setErrormessage] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     context.setAppHeaderNone(true);
@@ -32,20 +31,20 @@ function PagesLogin() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (email == "" || password == "") {
-      setError(true)
-      setErrormessage("Please Enter the Credentials")
-      return
+      setError(true);
+      setErrormessage("Please Enter the Credentials");
+      return;
     }
     try {
       setLoading(true);
-      setError(false)
+      setError(false);
       const config = {
         "Content-type": "application/json",
       };
 
       const { data } = await axios
         .post(
-          "http://localhost:5000/api/user/login",
+          "https://coming-to-me-from-backend.onrender.com/api/user/login",
           {
             email,
             password,
@@ -56,20 +55,17 @@ function PagesLogin() {
           console.log(data.data);
           localStorage.setItem("userInfo", JSON.stringify(data.data));
           setRedirect(true);
-          navigate('/userdashboard')
-          
+          navigate("/userdashboard");
         })
         .catch((err) => {
           // setError("Invalid Email or Password");
           setLoading(false);
-          setError(true)
+          setError(true);
           setErrormessage("Invalid Email or Password");
           console.log("Noob");
         });
-    } catch (error) { }
-
-    
-  }
+    } catch (error) {}
+  };
   return (
     <div className="login">
       <div className="login-content">

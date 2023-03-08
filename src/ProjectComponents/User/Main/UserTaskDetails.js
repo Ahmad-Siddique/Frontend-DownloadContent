@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Header from "../header";
 import Sidebar from "../sidebarmain";
 import { useState, useEffect } from "react";
@@ -15,8 +15,6 @@ import Spinner from "react-bootstrap/Spinner";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-
-
 const UserTaskDetails = () => {
   const [error, setError] = useState(false);
   const [errormessage, seterrormessage] = useState("");
@@ -31,7 +29,7 @@ const UserTaskDetails = () => {
   const [useroptions1, setuseroptions1] = useState([]);
   const [userdata, setuserdata] = useState();
   const [statusupdate, setstatusupdate] = useState("");
-  
+
   const [filteruser, setfilteruser] = useState([]);
   const [show, setshow] = useState(false);
   const [localdata, setlocaldata] = useState();
@@ -50,7 +48,7 @@ const UserTaskDetails = () => {
         "Content-type": "application/json",
       };
 
-      //    await fetch("http://localhost:5000/api/login", {
+      //    await fetch("https://coming-to-me-from-backend.onrender.com/api/login", {
       //      method: "POST",
       //      headers: { "Content-Type": "application/json" },
       //      body: JSON.stringify({ email,password }),
@@ -73,7 +71,8 @@ const UserTaskDetails = () => {
 
       const { data } = await axios
         .post(
-          "http://localhost:5000/api/updatestatus/" + id,
+          "https://coming-to-me-from-backend.onrender.com/api/updatestatus/" +
+            id,
           {
             status,
           },
@@ -112,7 +111,8 @@ const UserTaskDetails = () => {
       // console.log(users)
       const { data } = await axios
         .post(
-          "http://localhost:5000/api/transfertask/" + id,
+          "https://coming-to-me-from-backend.onrender.com/api/transfertask/" +
+            id,
           {
             transferredby,
             users,
@@ -137,7 +137,9 @@ const UserTaskDetails = () => {
   };
 
   const fetchingtaskdata = async () => {
-    const data = await axios.get("http://localhost:5000/api/onetask/" + id);
+    const data = await axios.get(
+      "https://coming-to-me-from-backend.onrender.com/api/onetask/" + id
+    );
     console.log("task data");
     console.log(data.data);
     settaskdata(data.data);
@@ -145,7 +147,9 @@ const UserTaskDetails = () => {
   };
 
   const fetchinguserdata = async () => {
-    const data = await axios.get("http://localhost:5000/api/user/allusers");
+    const data = await axios.get(
+      "https://coming-to-me-from-backend.onrender.com/api/user/allusers"
+    );
     await setuserdata(data.data);
 
     await data.data.map((gg) => {
@@ -188,10 +192,6 @@ const UserTaskDetails = () => {
   //   filteringuserdata();
   // }, [show]);
 
-
-
-
-
   const colourStyles = {
     control: (styles) => ({ ...styles, backgroundColor: "white" }),
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
@@ -203,7 +203,6 @@ const UserTaskDetails = () => {
       };
     },
   };
-
 
   return (
     <div>
@@ -272,7 +271,9 @@ const UserTaskDetails = () => {
             </div>
 
             <h2 style={{ marginTop: 15 }}>Status</h2>
-            <div style={{ marginLeft: 2, marginTop: 10 }}>{taskdata.status}</div>
+            <div style={{ marginLeft: 2, marginTop: 10 }}>
+              {taskdata.status}
+            </div>
 
             {taskdata.taskfile && (
               <a
@@ -319,8 +320,8 @@ const UserTaskDetails = () => {
             {taskdata.createdby._id === localdata._id ? (
               <div></div>
             ) : (
-              <div className='mb-5'>
-                <h3 className='mt-3'>Transfer to Other User:</h3>
+              <div className="mb-5">
+                <h3 className="mt-3">Transfer to Other User:</h3>
                 <Select
                   styles={colourStyles}
                   options={useroptions}
@@ -348,6 +349,6 @@ const UserTaskDetails = () => {
       </div>
     </div>
   );
-}
+};
 
-export default UserTaskDetails
+export default UserTaskDetails;

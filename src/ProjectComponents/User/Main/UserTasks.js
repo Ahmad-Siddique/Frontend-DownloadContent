@@ -26,11 +26,10 @@ const UserTasks = () => {
     console.log("Getting the data");
     try {
       const data = await axios.get(
-        "http://localhost:5000/api/taskoneuser/" + id
+        "https://coming-to-me-from-backend.onrender.com/api/taskoneuser/" + id
       );
 
       settaskdata(data.data[0].tasks);
-     
     } catch (e) {
       console.log("Cant fetch the data");
       console.log(e);
@@ -38,9 +37,9 @@ const UserTasks = () => {
   };
 
   const GotoChat = (id) => {
-     navigate("/usertasks/chats/" + id);
+    navigate("/usertasks/chats/" + id);
   };
-  
+
   const handleshow = () => {
     setshow(!show);
   };

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { useState } from "react";
 import Header from "../header";
 import Sidebar from "../sidebarmain";
@@ -11,7 +11,6 @@ import {
 } from "../../../components/card/card.jsx";
 
 const AdminCreateAdmin = () => {
-
   const [id, setid] = useState();
   const [name, setname] = useState("");
 
@@ -25,12 +24,12 @@ const AdminCreateAdmin = () => {
 
   const FormSubmit = async (e) => {
     if (emailid == "" || password == "" || name == "") {
-      setLoading(true)
+      setLoading(true);
       setError(true);
       seterrormessage("Please enter all the fields");
       setsuccessfull("");
-      setLoading(false)
-      return
+      setLoading(false);
+      return;
     }
     e.preventDefault();
     try {
@@ -38,9 +37,9 @@ const AdminCreateAdmin = () => {
       const config = {
         "Content-type": "application/json",
       };
-      const data  = await axios
+      const data = await axios
         .post(
-          "http://localhost:5000/api/adminregister",
+          "https://coming-to-me-from-backend.onrender.com/api/adminregister",
           {
             name,
 
@@ -52,7 +51,7 @@ const AdminCreateAdmin = () => {
         .then((data) => {
           console.log(data.data);
           setsuccessfull("Admin Registered Successfully");
-          
+
           setLoading(false);
           setError(false);
         })
@@ -63,17 +62,13 @@ const AdminCreateAdmin = () => {
           setLoading(false);
         });
     } catch (error) {
-      console.log(error)
-      setError(true)
-      setsuccessfull("")
-      seterrormessage(error.message)
+      console.log(error);
+      setError(true);
+      setsuccessfull("");
+      seterrormessage(error.message);
       setLoading(false);
     }
   };
-
-
-
-
 
   return (
     <div>
@@ -165,6 +160,6 @@ const AdminCreateAdmin = () => {
       </Card>
     </div>
   );
-}
+};
 
-export default AdminCreateAdmin
+export default AdminCreateAdmin;

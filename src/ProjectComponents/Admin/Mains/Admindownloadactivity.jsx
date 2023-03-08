@@ -25,11 +25,11 @@ const AdminAllUsers = () => {
   const handleShow = () => setShow(!show);
 
   const fetchinguserdata = async () => {
-    const data = await axios.get("http://localhost:5000/api/user/downloadactivity");
+    const data = await axios.get(
+      "https://coming-to-me-from-backend.onrender.com/api/user/downloadactivity"
+    );
     await setuserdata(data.data);
   };
-
-  
 
   useEffect(() => {
     fetchinguserdata();
@@ -109,7 +109,9 @@ const AdminAllUsers = () => {
                       <th className="border-top-0 pt-0 pb-2">Name</th>
 
                       <th className="border-top-0 pt-0 pb-2">Email</th>
-                      <th className="border-top-0 pt-0 pb-2">Downloaded Content</th>
+                      <th className="border-top-0 pt-0 pb-2">
+                        Downloaded Content
+                      </th>
                       <th className="border-top-0 pt-0 pb-2">Time</th>
                     </tr>
                   </thead>

@@ -12,7 +12,7 @@ import {
 import { useParams } from "react-router-dom";
 
 const AdminCreateAdmin = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const [name, setname] = useState("");
 
   const [emailid, setemail] = useState("");
@@ -23,21 +23,20 @@ const AdminCreateAdmin = () => {
   const [errormessage, seterrormessage] = useState(false);
   const [successful, setsuccessfull] = useState("");
 
-
   const fetchingadmindata = async () => {
-    const data = await axios.get("http://localhost:5000/api/getoneadmin/" + id);
+    const data = await axios.get(
+      "https://coming-to-me-from-backend.onrender.com/api/getoneadmin/" + id
+    );
     console.log(data.data.name);
-    
+
     setpassword(data.data.password);
     setname(data.data.name);
     setemail(data.data.emailid);
-    
   };
 
   useEffect(() => {
     fetchingadmindata();
   }, []);
-
 
   const FormSubmit = async (e) => {
     if (emailid == "" || password == "" || name == "") {
@@ -56,7 +55,8 @@ const AdminCreateAdmin = () => {
       };
       const data = await axios
         .post(
-          "http://localhost:5000/api/updateadmin/"+id,
+          "https://coming-to-me-from-backend.onrender.com/api/updateadmin/" +
+            id,
           {
             name,
 

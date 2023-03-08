@@ -26,7 +26,7 @@ const AdminUpdateUser = () => {
 
   const fetchinguserdatadata = async () => {
     const data = await axios.get(
-      "http://localhost:5000/api/user/getoneuser/" + id
+      "https://coming-to-me-from-backend.onrender.com/api/user/getoneuser/" + id
     );
 
     console.log(data.data.name);
@@ -57,7 +57,8 @@ const AdminUpdateUser = () => {
       };
       const data = await axios
         .post(
-          "http://localhost:5000/api/user/updateuser/" + id,
+          "https://coming-to-me-from-backend.onrender.com/api/user/updateuser/" +
+            id,
           {
             name,
             password,

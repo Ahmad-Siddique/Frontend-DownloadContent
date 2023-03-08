@@ -74,12 +74,7 @@ const AdminCreateTask = () => {
   };
   console.log(clients1);
 
-
-
-  
-
   useEffect(() => {
-    
     console.log(localdata);
     setlocaldata(JSON.parse(localStorage.getItem("adminInfo")));
 
@@ -94,36 +89,35 @@ const AdminCreateTask = () => {
     handleuserchange();
   }, [users]);
 
-
   const handleclientchange = (e) => {
     console.log("client data", clients1);
   };
 
-   useEffect(() => {
-     handleclientchange();
-   }, [clients1]);
+  useEffect(() => {
+    handleclientchange();
+  }, [clients1]);
 
   const FormSubmit = async (e) => {
     console.log("Went into the function");
     e.preventDefault();
     if (name === "" || description === "" || taskfile === "") {
       setError(true);
-      seterrormessage("Please provide valid credetials")
+      seterrormessage("Please provide valid credetials");
       return;
     }
     const config = {
       "Content-type": "application/json",
     };
     const data1 = await axios.post(
-      "http://localhost:5000/api/taskexist",
+      "https://coming-to-me-from-backend.onrender.com/api/taskexist",
       {
         name,
       },
       config
     );
-    console.log(data1.data.message)
+    console.log(data1.data.message);
     if (data1.data.message == "Yes") {
-      setError(true)
+      setError(true);
       setsuccessfull("");
       console.log("Setting error");
       seterrormessage("Content with this name already Exist");
@@ -131,75 +125,72 @@ const AdminCreateTask = () => {
     } else {
       console.log("Went into else gg ");
       setError1("");
-      
 
-        try {
-          console.log("Inside try");
+      try {
+        console.log("Inside try");
 
-          setLoading(true);
-          const config = {
-            "Content-type": "application/json",
-          };
-          if (Object.getOwnPropertyNames(users).length === 0) {
-            setstatus("Unssigned");
-          } else {
-            setstatus("Assigned");
-          }
-          console.log(status);
-          // console.log(status)
-          // console.log(clients1[i].name)
-          
-          console.log("Users for submission");
+        setLoading(true);
+        const config = {
+          "Content-type": "application/json",
+        };
+        if (Object.getOwnPropertyNames(users).length === 0) {
+          setstatus("Unssigned");
+        } else {
+          setstatus("Assigned");
+        }
+        console.log(status);
+        // console.log(status)
+        // console.log(clients1[i].name)
 
-          // console.log(createdby)
-          const formdata = new FormData();
-          
-          formdata.append("name", name);
-          formdata.append("description", description);
-          formdata.append("taskfile", taskfile);
-          console.log("form data set");
-          await axios
-            .post("http://localhost:5000/api/taskregister", formdata, config)
-            .then((data) => {
-              console.log(data.data);
-              setsuccessfull("Task Registered Successfully");
+        console.log("Users for submission");
 
-              setLoading(false);
-              setError(false);
-            })
-            .catch((err) => {
-              setError(true);
-              seterrormessage(err.message);
-              setsuccessfull("");
-              setLoading(false);
-            });
-        } catch (error) {
-          console.log(error);
-          setError(true);
-          setsuccessfull("");
-          seterrormessage(error.message);
-          setLoading(false);
-        
+        // console.log(createdby)
+        const formdata = new FormData();
+
+        formdata.append("name", name);
+        formdata.append("description", description);
+        formdata.append("taskfile", taskfile);
+        console.log("form data set");
+        await axios
+          .post(
+            "https://coming-to-me-from-backend.onrender.com/api/taskregister",
+            formdata,
+            config
+          )
+          .then((data) => {
+            console.log(data.data);
+            setsuccessfull("Task Registered Successfully");
+
+            setLoading(false);
+            setError(false);
+          })
+          .catch((err) => {
+            setError(true);
+            seterrormessage(err.message);
+            setsuccessfull("");
+            setLoading(false);
+          });
+      } catch (error) {
+        console.log(error);
+        setError(true);
+        setsuccessfull("");
+        seterrormessage(error.message);
+        setLoading(false);
       }
     }
   };
 
-
   const colourStyles = {
-  control: styles => ({ ...styles, backgroundColor: 'white' }),
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    
-    return {
-      ...styles,
-      backgroundColor: isDisabled ? 'black' : 'black',
-      color: '#FFF',
-      cursor: isDisabled ? 'not-allowed' : 'default',
-     
-    };
-  },
- 
+    control: (styles) => ({ ...styles, backgroundColor: "white" }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      return {
+        ...styles,
+        backgroundColor: isDisabled ? "black" : "black",
+        color: "#FFF",
+        cursor: isDisabled ? "not-allowed" : "default",
+      };
+    },
   };
-  
 
   const DropDown = (props) => {
     const options = props.multi
@@ -227,10 +218,6 @@ const AdminCreateTask = () => {
       </div>
     );
   };
-
-
-
-
 
   return (
     <div>
