@@ -47,7 +47,6 @@
     "lity": "^2.4.1",
     "masonry-layout": "^4.2.2",
     "multiselect-react-dropdown": "^2.0.25",
-    "node-sass": "^8.0.0",
     "pdfmake": "^0.2.6",
     "photoswipe": "^5.3.4",
     "primeicons": "^5.0.0",
@@ -91,5 +90,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "node-sass": "^8.0.0"
   }
 }
