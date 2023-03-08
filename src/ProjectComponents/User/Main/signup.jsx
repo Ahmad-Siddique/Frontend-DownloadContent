@@ -145,6 +145,10 @@ function PagesLogin() {
           <div className="text-white text-opacity-50 text-center mb-4">
             Already have an account?? <Link to="/userlogin">Login</Link>
           </div>
+
+          <div className="text-white text-opacity-50 text-center mb-4">
+            Go to admin login? <Link to="/adminlogin">Admin Login</Link>
+          </div>
           <button
             type="submit"
             className="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3 mt-3"
