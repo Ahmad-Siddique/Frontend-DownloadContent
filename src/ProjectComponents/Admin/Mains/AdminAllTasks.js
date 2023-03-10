@@ -33,7 +33,7 @@ const AdminAllTasks = () => {
 
   const fetchingtaskdata = async () => {
     const data = await axios.get(
-      "https://coming-to-me-from-backend.onrender.com/api/alltasks"
+      "https://coming-to-me-from-backend.onrender.com/api/allcontent"
     );
     await settaskdata1(data.data);
     await settaskdata(data.data);
@@ -47,14 +47,21 @@ const AdminAllTasks = () => {
 
   const DeleteUser = async (id) => {
     setLoading(true);
-    const data = await axios.post(
-      "https://coming-to-me-from-backend.onrender.com/api/deletetasks/" + id
-    );
+    try {
+      const data = await axios.post(
+        "https://coming-to-me-from-backend.onrender.com/api/deletecontent/" + id
+      );
 
-    setLoading(false);
-    setsuccessfull("Admin Deleted Successfully");
-    console.log(data.data.message);
-    handleShow();
+      setLoading(false);
+      setsuccessfull("Content Deleted Successfully");
+      console.log(data.data.message);
+      setError(false);
+      handleShow();
+    } catch {
+      setLoading(false);
+      setError(true);
+      seterrormessage("Couldnt delete the content.");
+    }
   };
 
   useEffect(() => {
@@ -200,14 +207,12 @@ const AdminAllTasks = () => {
                 <table className="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th className="border-top-0 pt-0 pb-2">Date</th>
-                      <th className="border-top-0 pt-0 pb-2">Task Name</th>
-                      <th className="border-top-0 pt-0 pb-2">Created By</th>
-                      <th className="border-top-0 pt-0 pb-2">Clients</th>
-                      <th className="border-top-0 pt-0 pb-2">Users</th>
-                      <th className="border-top-0 pt-0 pb-2">Recurring Task</th>
-                      <th className="border-top-0 pt-0 pb-2">Transferred by</th>
-                      <th className="border-top-0 pt-0 pb-2">Update</th>
+                      {/* <th className="border-top-0 pt-0 pb-2">Time</th> */}
+                      <th className="border-top-0 pt-0 pb-2">Content Name</th>
+                      <th className="border-top-0 pt-0 pb-2">
+                        Content Description
+                      </th>
+                      {/* <th className="border-top-0 pt-0 pb-2">Update</th> */}
                       <th className="border-top-0 pt-0 pb-2">Delete</th>
                     </tr>
                   </thead>
@@ -217,18 +222,11 @@ const AdminAllTasks = () => {
                       taskdata.map((e) => {
                         return (
                           <tr>
-                            <td>{TimeStampToDate(e.date)}</td>
-
+                            {/* <td>{e.time}</td> */}
                             <td>{e.name}</td>
-                            <td>{e.createdby.name}</td>
-                            <td>{e.clients.name}</td>
-                            <td>{e.users ? e.users.name : unAssigned}</td>
-                            <td>{e.recurringtask}</td>
-                            <td>
-                              {e.transferredby ? e.transferredby.name : "None"}
-                            </td>
+                            <td>{e.description}</td>
 
-                            <td>
+                            {/* <td>
                               <button
                                 className="btn btn-outline-dark"
                                 style={{ borderColor: "white", color: "white" }}
@@ -237,7 +235,7 @@ const AdminAllTasks = () => {
                               >
                                 Update
                               </button>{" "}
-                            </td>
+                            </td> */}
                             <td>
                               <button
                                 className="btn btn-outline-dark"

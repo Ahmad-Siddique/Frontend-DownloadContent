@@ -28,7 +28,7 @@ const Menu = [
     icon: "bi bi-bar-chart",
     title: "DOWNLOAD ACTIVITY",
   },
-  // { path: "/alltasks", icon: "bi bi-bar-chart", title: "ALL CONTENT" },
+  { path: "/alltasks", icon: "bi bi-bar-chart", title: "ALL CONTENT" },
   // {
   //   path: "/email",
   //   icon: "bi bi-envelope",

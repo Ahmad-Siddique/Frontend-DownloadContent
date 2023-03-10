@@ -131,7 +131,7 @@ function PagesLogin() {
             Dont have an account? <Link to="/usersignup">Sign up</Link>
           </div>
           <div className="text-white text-opacity-50 text-center mb-4">
-           Go to admin login? <Link to="/adminlogin">Admin Login</Link>
+            Go to admin login? <Link to="/adminlogin">Admin Login</Link>
           </div>
           <button
             type="submit"
