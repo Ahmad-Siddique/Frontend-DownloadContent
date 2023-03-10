@@ -55,7 +55,7 @@ function PagesLogin() {
           console.log(data.data);
           localStorage.setItem("userInfo", JSON.stringify(data.data));
           setRedirect(true);
-          navigate("/userdashboard");
+          navigate("/useropentasks");
         })
         .catch((err) => {
           // setError("Invalid Email or Password");

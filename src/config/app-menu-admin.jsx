@@ -1,6 +1,6 @@
 const Menu = [
   { is_header: true, title: "Navigation" },
-  { path: "/admindashboard", icon: "bi bi-cpu", title: "Dashboard" },
+  // { path: "/admindashboard", icon: "bi bi-cpu", title: "Dashboard" },
   { is_divider: true },
   { path: "/alladmins", icon: "bi bi-bar-chart", title: "ALL ADMINS" },
   { is_divider: true },

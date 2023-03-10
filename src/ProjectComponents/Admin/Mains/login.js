@@ -55,7 +55,7 @@ function PagesLogin() {
           console.log(data.data);
           localStorage.setItem("adminInfo", JSON.stringify(data.data));
           setRedirect(true);
-          navigate("/admindashboard");
+          navigate("/alltasks");
         })
         .catch((err) => {
           // setError("Invalid Email or Password");
