@@ -5,11 +5,17 @@ function Header() {
   const navigate = useNavigate();
 
   const [data, setdata] = useState("");
-
+  const [show, setshow] = useState(true)
+  
+  const showing = () => {
+    setshow(!show)
+  }
   const handleLogout = () => {
     localStorage.removeItem("userInfo");
     console.log("Functiuon run");
-    navigate("/userlogin");
+    navigate("/userlogin")
+    CheckingAuth()
+    
   };
 
 
@@ -18,14 +24,17 @@ function Header() {
     console.log("Auth checked");
     if (data1) {
       await setdata(JSON.parse(localStorage.getItem("userInfo")));
-    } else navigate("/userlogin");
+    } else {
+      navigate("/userlogin")
+    };
+    showing()
   };
  
 
 
   useEffect(() => {
-    CheckingAuth()
-  },[data]);
+    CheckingAuth();
+  }, [data]);
 
   const notificationData = [
     {

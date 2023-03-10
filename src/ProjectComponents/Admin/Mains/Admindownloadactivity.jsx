@@ -24,6 +24,26 @@ const AdminAllUsers = () => {
 
   const handleShow = () => setShow(!show);
 
+  const DeleteUser = async (id) => {
+    setLoading(true);
+    try {
+      const data = await axios.post(
+        "https://coming-to-me-from-backend.onrender.com/api/user/downloadactivitydelete/" +
+          id
+      );
+
+      setLoading(false);
+      setsuccessfull("Download Activity Deleted Successfully");
+      console.log(data.data.message);
+      setError(false);
+      handleShow();
+    } catch {
+      setLoading(false);
+      setError(true);
+      seterrormessage("Couldnt delete the content.");
+    }
+  };
+
   const fetchinguserdata = async () => {
     const data = await axios.get(
       "https://coming-to-me-from-backend.onrender.com/api/user/downloadactivity"
@@ -113,6 +133,7 @@ const AdminAllUsers = () => {
                         Downloaded Content
                       </th>
                       <th className="border-top-0 pt-0 pb-2">Time</th>
+                      <th className="border-top-0 pt-0 pb-2">Delete</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -126,6 +147,16 @@ const AdminAllUsers = () => {
                             <td>{e.email}</td>
                             <td>{e.activity}</td>
                             <td>{e.time}</td>
+                            <td>
+                              <button
+                                className="btn btn-outline-dark"
+                                style={{ borderColor: "white", color: "white" }}
+                                variant="dark"
+                                onClick={() => DeleteUser(e._id)}
+                              >
+                                Delete
+                              </button>{" "}
+                            </td>
                           </tr>
                         );
                       })}

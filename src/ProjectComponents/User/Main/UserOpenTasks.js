@@ -13,25 +13,57 @@ import Spinner from "react-bootstrap/Spinner";
 
 const UserOpenTasks = () => {
   const [taskdata, settaskdata] = useState();
-
+  const [downloadactivity, setdownloadactivity] = useState([]);
   const [show, setshow] = useState(false);
-
+  const [activities, setactivities] = useState([]);
   const [error, setError] = useState(false);
   const [errormessage, seterrormessage] = useState("");
   const [successful, setsuccessfull] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const fetchdownloadactivity = async () => {
+    const data1 = JSON.parse(localStorage.getItem("userInfo"));
+    try {
+      const data = await axios.post(
+        "https://coming-to-me-from-backend.onrender.com/api/user/downloadactivityuser",
+        {
+          email: data1.email,
+        }
+      );
+      console.log("GOT DOWNLOAD ACTIVITY");
+
+      await setdownloadactivity(data.data);
+      data.data.map((item) => {
+        // console.log("Activity")
+        //   console.log(item)
+        console.log(item.name);
+        activities.push(item.activity);
+      });
+      console.log("Array done");
+      console.log(activities);
+    } catch (e) {
+      console.log("Cant fetch the data");
+      console.log(e);
+    }
+  };
+
+  const ActivityCheck = (activity, value) => {};
 
   const fetchopentasks = async () => {
     try {
       const data = await axios.get(
         "https://coming-to-me-from-backend.onrender.com/api/alltasks"
       );
-      console.log(data.data);
+
       await settaskdata(data.data);
     } catch (e) {
       console.log("Cant fetch the data");
       console.log(e);
     }
+  };
+
+  const checkUsername = (obj) => {
+    return obj.name === "max";
   };
 
   const handleshow = () => {
@@ -66,7 +98,7 @@ const UserOpenTasks = () => {
           handleshow();
           setLoading(false);
           setError(false);
-          setsuccessfull("Task has been claimed");
+          setsuccessfull("Content has been Downloaded");
         })
         .catch((err) => {
           setError(true);
@@ -82,6 +114,7 @@ const UserOpenTasks = () => {
 
   useEffect(() => {
     fetchopentasks();
+    fetchdownloadactivity();
   }, [show]);
 
   return (
@@ -162,6 +195,7 @@ const UserOpenTasks = () => {
                       </th>
 
                       <th className="border-top-0 pt-0 pb-2">Download</th>
+                      <th className="border-top-0 pt-0 pb-2">Downloaded</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -170,10 +204,33 @@ const UserOpenTasks = () => {
                       taskdata.map((e) => {
                         return (
                           <tr>
-                            {console.log(e)}
                             <td>{e.name}</td>
 
                             <td>{e.description}</td>
+
+                            <td
+                              className={{
+                                alignItems: "center",
+                                alignSelf: "center",
+                              }}
+                            >
+                              {activities.includes(e.name)}
+                              {activities.includes(e.name) === true ? (
+                                <span
+                                  style={{ color: "green" }}
+                                  class="material-symbols-outlined"
+                                >
+                                  done
+                                </span>
+                              ) : (
+                                <span
+                                  style={{ color: "red" }}
+                                  class="material-symbols-outlined"
+                                >
+                                  close
+                                </span>
+                              )}
+                            </td>
 
                             <td>
                               <button
