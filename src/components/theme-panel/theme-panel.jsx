@@ -72,7 +72,7 @@ function ThemePanel() {
 	const coverList = [
     {
       name: "Default",
-      coverThumbImage: "/assets/img/cover/cover-thumb-4.jpg",
+      coverThumbImage: "/assets/img/cover/cover-thumb-1.jpg",
       coverClass: "",
     },
     {
@@ -87,7 +87,7 @@ function ThemePanel() {
     },
     {
       name: "Cover 4",
-      coverThumbImage: "/assets/img/cover/cover-thumb-1.jpg",
+      coverThumbImage: "/assets/img/cover/cover-thumb-4.jpg",
       coverClass: "bg-cover-4",
     },
     {

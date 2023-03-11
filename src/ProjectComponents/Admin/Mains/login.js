@@ -89,8 +89,7 @@ function PagesLogin() {
           {loading && (
             <div
               style={{
-                position: "relative",
-                display: "flex",
+                
                 justifyContent: "center",
                 alignItems: "center",
               }}
