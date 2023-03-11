@@ -22,7 +22,7 @@ html {
 		right:0;
 		z-index:-10; 
 		background-color: $body-bg;
-		background-image: $body-bg-gradient;
+		background-image: none;
 		background-image: $body-bg-cover;
 		background-repeat: no-repeat;
 		background-position: center;
@@ -53,8 +53,8 @@ body {
 		height: 100%;
 		background-attachment: initial;
 		background-color: transparent;
-		background-image: $body-bg-image;
-		background-size: $body-bg-image-size;
+		background-image: none;
+		background-size: none;
 		background-repeat: repeat;
 		background-attachment: initial;
 		z-index: -5;

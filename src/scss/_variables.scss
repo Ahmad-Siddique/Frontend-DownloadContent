@@ -121,10 +121,11 @@ $enable-rtl:                              false !default;
 // 03. Body setting
 
 $body-bg:                                 $gray-900 !default;
-$body-bg-gradient:                        linear-gradient(180deg, rgba(50,70,80,.9) 0%, rgba(13,16,27,1) 100%) !default;
-$body-bg-image:                           url('images/pattern.png') !default;
+$body-bg-gradient:                        linear-gradient(180deg, rgba(50,70,80,0) 0%, rgba(13,16,27,0) 100%) !default;
+
+// $body-bg-image:                           url('images/pattern.png') !default;
 $body-bg-cover:                           url('images/cover.jpg') !default;
-$body-bg-image-size:                      rem(75px) !default;
+// $body-bg-image-size:                      rem(75px) !default;
 $body-letter-spacing:                     rem(.75px) !default;
 $body-color:                              rgba($white, .75) !default;
 $font-family-base:                        'Chakra Petch', sans-serif !default;
