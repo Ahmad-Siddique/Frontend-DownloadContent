@@ -105,21 +105,7 @@ const AdminAllUsers = () => {
           <div className="tab-content p-4">
             <div className="tab-pane fade show active" id="allTab">
               <div className="input-group mb-4">
-                <div className="flex-fill position-relative">
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className="form-control px-35px"
-                      placeholder="Search Users"
-                    />
-                    <div
-                      className="input-group-text position-absolute top-0 bottom-0 bg-none border-0 start-0"
-                      style={{ zIndex: 1020 }}
-                    >
-                      <i className="fa fa-search opacity-5"></i>
-                    </div>
-                  </div>
-                </div>
+                <div className="flex-fill position-relative"></div>
               </div>
 
               <div className="table-responsive">

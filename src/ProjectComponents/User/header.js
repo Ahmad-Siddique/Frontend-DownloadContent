@@ -80,7 +80,7 @@ function Header() {
   };
 
   return (
-    <div id="header" className="app-header">
+    <div style={{backgroundColor:"white"}} id="header" className="app-header">
       <div className="desktop-toggler">
         <button
           type="button"

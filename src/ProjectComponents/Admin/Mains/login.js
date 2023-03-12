@@ -89,7 +89,6 @@ function PagesLogin() {
           {loading && (
             <div
               style={{
-                
                 justifyContent: "center",
                 alignItems: "center",
               }}

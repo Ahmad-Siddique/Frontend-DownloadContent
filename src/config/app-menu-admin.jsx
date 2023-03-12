@@ -1,34 +1,68 @@
 const Menu = [
   { is_header: true, title: "Navigation" },
-  // { path: "/admindashboard", icon: "bi bi-cpu", title: "Dashboard" },
-  { is_divider: true },
-  { path: "/alladmins", icon: "bi bi-bar-chart", title: "ALL ADMINS" },
-  { is_divider: true },
-  { path: "/createadmin", icon: "bi bi-bar-chart", title: "CREATE ADMIN" },
-  { is_divider: true },
-  { path: "/updateprofile", icon: "bi bi-bar-chart", title: "UPDATE PROFILE" },
-  { is_divider: true },
-  { path: "/allusers", icon: "bi bi-bar-chart", title: "ALL USER" },
-  { is_divider: true },
-  { path: "/createuser", icon: "bi bi-bar-chart", title: "CREATE USER" },
-  { is_divider: true },
-
-  { path: "/useractivity", icon: "bi bi-bar-chart", title: "USER ACTIVITY" },
-  { is_divider: true },
-
+  { path: "/admindashboard", icon: "bi bi-cpu", title: "Dashboard" },
   { is_divider: true },
   {
-    path: "/createtask",
-    icon: "bi bi-bar-chart",
-    title: "CREATE DOWNLOADABLE CONTENT",
+    path: "/createadmin",
+    icon: "bi bi-envelope",
+    title: "Marketing Forms",
+    children: [
+      { path: "/createadmin", title: "CREATE ADMIN" },
+      { path: "/createuser", title: "CREATE USER" },
+      { path: "/createtask", title: "CREATE DOWNLOADABLE CONTENT" },
+    ],
   },
+  // { path: "/alladmins", icon: "bi bi-bar-chart", title: "ALL ADMINS" },
+  // { is_divider: true },
+
+  // { path: "/updateprofile", icon: "bi bi-bar-chart", title: "UPDATE PROFILE" },
+  // { is_divider: true },
+  // { path: "/allusers", icon: "bi bi-bar-chart", title: "ALL USER" },
+  // { is_divider: true },
+  // { path: "/createuser", icon: "bi bi-bar-chart", title: "CREATE USER" },
+
+  // { is_divider: true },
+  // { path: "/createadmin", icon: "bi bi-bar-chart", title: "CREATE ADMIN" },
+
+  // { is_divider: true },
+  // {
+  //   path: "/createtask",
+  //   icon: "bi bi-bar-chart",
+  //   title: "CREATE DOWNLOADABLE CONTENT",
+  // },
+  // { is_divider: true },
+
+  // { path: "/useractivity", icon: "bi bi-bar-chart", title: "USER ACTIVITY" },
+  // { is_divider: true },
+
   { is_divider: true },
   {
     path: "/downloadactivity",
     icon: "bi bi-bar-chart",
-    title: "DOWNLOAD ACTIVITY",
+    title: "Operations Forms (All Exhibitors)",
   },
-  { path: "/alltasks", icon: "bi bi-bar-chart", title: "ALL CONTENT" },
+
+  { is_divider: true },
+  {
+    path: "/downloadactivity",
+    icon: "bi bi-bar-chart",
+    title: "Operations Forms (Space/Raw Space Exhibitors)",
+  },
+
+  { is_divider: true },
+  {
+    path: "/downloadactivity",
+    icon: "bi bi-bar-chart",
+    title: "Operations Forms (Shell Scheme Exhibitors)",
+  },
+
+  { is_divider: true },
+  {
+    path: "/downloadactivity",
+    icon: "bi bi-bar-chart",
+    title: "Optional Forms ( All Exhibitors)",
+  },
+  // { path: "/alltasks", icon: "bi bi-bar-chart", title: "ALL CONTENT" },
   // {
   //   path: "/email",
   //   icon: "bi bi-envelope",

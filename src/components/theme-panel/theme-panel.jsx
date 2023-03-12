@@ -99,7 +99,7 @@ function ThemePanel() {
 	
 	return (
 		<div className={'app-theme-panel' + ((active) ? ' active' : '')}>
-			<div className="app-theme-panel-container">
+			{/* <div className="app-theme-panel-container">
 				<a href="#/" onClick={toggleAppThemePanel} className="app-theme-toggle-btn"><i className="bi bi-sliders"></i></a>
 				<div className="app-theme-panel-content">
 					<div className="small fw-bold text-white mb-1">Theme Color</div>
@@ -128,7 +128,7 @@ function ThemePanel() {
 						</CardBody>
 					</Card>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };
