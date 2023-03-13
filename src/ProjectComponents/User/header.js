@@ -80,7 +80,11 @@ function Header() {
   };
 
   return (
-    <div style={{backgroundColor:"white"}} id="header" className="app-header">
+    <div
+      style={{ backgroundColor: "white" }}
+      id="header"
+      className="app-header"
+    >
       <div className="desktop-toggler">
         <button
           type="button"
@@ -106,11 +110,14 @@ function Header() {
       </div>
 
       <div className="brand">
-        <Link to="/" className="brand-logo">
-          <span className="brand-img">
-            <span className="brand-img-text text-theme">T</span>
+        <Link to="/useropentasks" className="brand-logo">
+          <span className="brand-text">
+            <img
+              src="/assets/img/user/mainlogo.svg"
+              alt="Profile"
+              height="60"
+            />
           </span>
-          <span className="brand-text">DOWNLOAD CONTENT</span>
         </Link>
       </div>
 
@@ -269,7 +276,7 @@ function Header() {
                 height="60"
               />
             </div>
-            <div className="menu-text d-sm-block d-none">{data.name}</div>
+            <div style={{color:"black"}} className="menu-text d-sm-block d-none">{data.name}</div>
           </a>
           <div className="dropdown-menu dropdown-menu-end me-lg-3 fs-11px mt-1">
             {/* <Link

@@ -92,6 +92,13 @@ import UserOpenTasks from '../ProjectComponents/User/Main/UserOpenTasks.js';
 import UserTasks from "../ProjectComponents/User/Main/UserTasks";
 
 import SignUp from '../ProjectComponents/User/Main/signup'
+import Form1 from '../ProjectComponents/User/Main/Form1.js';
+import Form2 from '../ProjectComponents/User/Main/Form2.js';
+import Form3 from '../ProjectComponents/User/Main/Form3.js';
+import UserOpenTasks1 from '../ProjectComponents/User/Main/UserOpenTasks1.js';
+import UserOpenTasks2 from '../ProjectComponents/User/Main/UserOpenTasks2.js';
+import UserOpenTasks3 from '../ProjectComponents/User/Main/UserOpenTasks3.js';
+import StaticPage from '../ProjectComponents/User/Main/StaticPage.js';
 
 
 
@@ -110,6 +117,14 @@ const AppRoute = [
 
       // { path: "usertasks", element: <UserTasks /> },
       { path: "useropentasks", element: <UserOpenTasks /> },
+      { path: "useropentasks1", element: <UserOpenTasks1 /> },
+      { path: "useropentasks2", element: <UserOpenTasks2 /> },
+      { path: "useropentasks3", element: <UserOpenTasks3 /> },
+      { path: "staticpage", element: <StaticPage /> },
+
+      { path: "form1", element: <Form1 /> },
+      { path: "form2", element: <Form2 /> },
+      { path: "form3", element: <Form3 /> },
 
       { path: "adminlogin", element: <AdminLogin /> },
       { path: "admindashboard", element: <AdminDashboard /> },

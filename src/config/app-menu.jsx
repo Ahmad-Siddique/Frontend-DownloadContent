@@ -2,18 +2,59 @@ const Menu = [
   { is_header: true, title: "Navigation" },
   // { path: "/userdashboard", icon: "bi bi-cpu", title: "DASHBOARD" },
   { is_divider: true },
-  // { path: "/usercreatetask", icon: "bi bi-bar-chart", title: "CREATE TASK" },
+
+  {
+    path: "/staticpage",
+    icon: "bi bi-bar-chart",
+    title: "Static page",
+  },
+
   { is_divider: true },
-  { path: "/useropentasks", icon: "bi bi-bar-chart", title: "DOWNLOAD CONTENT" },
+  {
+    path: "/form1",
+    icon: "bi bi-envelope",
+    title: "Marketing Forms",
+    children: [
+      { path: "/form1", title: "Form 1" },
+      { path: "/form2", title: "Form 2" },
+      { path: "/form3", title: "Form 3" },
+    ],
+  },
+
   { is_divider: true },
-  // { path: "/usertasks", icon: "bi bi-bar-chart", title: "YOUR TASK" },
-  
+
+  {
+    path: "/useropentasks",
+    icon: "bi bi-bar-chart",
+    title: "All Exhibitors",
+  },
   { is_divider: true },
-  // {
-  //   path: "/usertransfertask",
-  //   icon: "bi bi-bar-chart",
-  //   title: "TRANSFER TASK",
-  // },
+
+  { is_divider: true },
+
+  {
+    path: "/useropentasks1",
+    icon: "bi bi-bar-chart",
+    title: "Space/Raw Space Exhibitors",
+  },
+  { is_divider: true },
+
+  { is_divider: true },
+
+  {
+    path: "/useropentasks2",
+    icon: "bi bi-bar-chart",
+    title: "Shell Scheme Exhibitors",
+  },
+  { is_divider: true },
+
+  { is_divider: true },
+
+  {
+    path: "/useropentasks3",
+    icon: "bi bi-bar-chart",
+    title: "All Exhibitors",
+  },
   { is_divider: true },
 
   // {
