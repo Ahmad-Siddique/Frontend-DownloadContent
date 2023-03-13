@@ -21,14 +21,18 @@ const UserOpenTasks = () => {
   const [successful, setsuccessfull] = useState("");
   const [loading, setLoading] = useState(false);
   const [progress, setprogress] = useState(0);
+  const [show1,setshow1] = useState(true)
 
   const fetchdownloadactivity = async () => {
-    const data1 = JSON.parse(localStorage.getItem("userInfo"));
+    const data1 = await JSON.parse(localStorage.getItem("userInfo"));
+    const dataemail = data1.email;
+
+    console.log(dataemail);
     try {
       const data = await axios.post(
         "https://coming-to-me-from-backend.onrender.com/api/user/downloadactivityuser",
         {
-          email: data1.email,
+          email: dataemail,
         }
       );
       console.log("GOT DOWNLOAD ACTIVITY");
@@ -39,10 +43,12 @@ const UserOpenTasks = () => {
         //   console.log(item)
         console.log(item.name);
         activities.push(item.activity);
+        setshow1(!show1);
+        
       });
       console.log("Array done");
       console.log(activities);
-      ActivityCheckProgress();
+      handleshow();
     } catch (e) {
       console.log("Cant fetch the data");
       console.log(e);
@@ -50,15 +56,17 @@ const UserOpenTasks = () => {
   };
 
   const ActivityCheckProgress = async () => {
-    const tasking = await taskdata;
-    const activting = await activities;
-
+    console.log("Doing this activity");
     let newdata = await taskdata.filter(
-      (data) => activities.includes(data.name) == true
+      (data) => activities.includes(data.name) === true
     );
 
-    newdata = Math.floor((newdata.length / taskdata.length) * 100);
+    newdata = await Math.floor((newdata.length / taskdata.length) * 100);
+    // newdata = newdata.toString() + "%";
+    console.log("Setting new data");
     setprogress(newdata);
+    console.log(newdata)
+    
   };
 
   const fetchopentasks = async () => {
@@ -74,10 +82,7 @@ const UserOpenTasks = () => {
     }
   };
 
-  const checkUsername = (obj) => {
-    return obj.name === "max";
-  };
-
+  
   const handleshow = () => {
     setshow(!show);
   };
@@ -108,6 +113,7 @@ const UserOpenTasks = () => {
           console.log("req sent");
           console.log(data.data);
           handleshow();
+          setshow1(!show1)
           setLoading(false);
           setError(false);
           setsuccessfull("Content has been Downloaded");
@@ -127,16 +133,17 @@ const UserOpenTasks = () => {
   useEffect(() => {
     fetchopentasks();
     fetchdownloadactivity();
-    // ActivityCheckProgress();
+   
   }, [show]);
 
   useEffect(() => {
     ActivityCheckProgress();
-  }, [activities, taskdata]);
+  }, [show1]);
+
 
   return (
     <div>
-      {" "}
+    
       <Header />
       <Sidebar />
       <div>
@@ -190,16 +197,18 @@ const UserOpenTasks = () => {
 
               <div className="table-responsive">
                 <div style={{ marginBottom: 20 }} class="progress">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style={{ width: progress.toString() + "%" }}
-                    aria-valuenow={progress}
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    {progress}%
-                  </div>
+                  {progress && (
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      style={{ width: progress.toString() + "%" }}
+                      aria-valuenow={progress}
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      {progress.toString()+"%"}
+                    </div>
+                  )}
                 </div>
                 <table className="table table-hover text-nowrap">
                   <thead>

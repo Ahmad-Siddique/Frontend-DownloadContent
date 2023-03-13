@@ -12,8 +12,10 @@ function Header() {
   }
   const handleLogout = () => {
     localStorage.removeItem("userInfo");
+    CheckingAuth();
     console.log("Functiuon run");
     navigate("/userlogin")
+    showing()
     CheckingAuth()
     
   };
@@ -34,7 +36,7 @@ function Header() {
 
   useEffect(() => {
     CheckingAuth();
-  }, []);
+  }, [show]);
 
   const notificationData = [
     {
