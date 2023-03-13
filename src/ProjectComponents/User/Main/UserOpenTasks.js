@@ -12,7 +12,7 @@ import {
 import Spinner from "react-bootstrap/Spinner";
 
 const UserOpenTasks = () => {
-  const [taskdata, settaskdata] = useState();
+  const [taskdata, settaskdata] = useState([]);
   const [downloadactivity, setdownloadactivity] = useState([]);
   const [show, setshow] = useState(false);
   const [activities, setactivities] = useState([]);
@@ -20,6 +20,7 @@ const UserOpenTasks = () => {
   const [errormessage, seterrormessage] = useState("");
   const [successful, setsuccessfull] = useState("");
   const [loading, setLoading] = useState(false);
+  const [progress, setprogress] = useState(0);
 
   const fetchdownloadactivity = async () => {
     const data1 = JSON.parse(localStorage.getItem("userInfo"));
@@ -33,7 +34,7 @@ const UserOpenTasks = () => {
       console.log("GOT DOWNLOAD ACTIVITY");
 
       await setdownloadactivity(data.data);
-      data.data.map((item) => {
+      await data.data.map((item) => {
         // console.log("Activity")
         //   console.log(item)
         console.log(item.name);
@@ -41,13 +42,24 @@ const UserOpenTasks = () => {
       });
       console.log("Array done");
       console.log(activities);
+      ActivityCheckProgress();
     } catch (e) {
       console.log("Cant fetch the data");
       console.log(e);
     }
   };
 
-  const ActivityCheck = (activity, value) => {};
+  const ActivityCheckProgress = async () => {
+    const tasking = await taskdata;
+    const activting = await activities;
+
+    let newdata = await taskdata.filter(
+      (data) => activities.includes(data.name) == true
+    );
+
+    newdata = Math.floor((newdata.length / taskdata.length) * 100);
+    setprogress(newdata);
+  };
 
   const fetchopentasks = async () => {
     try {
@@ -115,7 +127,12 @@ const UserOpenTasks = () => {
   useEffect(() => {
     fetchopentasks();
     fetchdownloadactivity();
+    // ActivityCheckProgress();
   }, [show]);
+
+  useEffect(() => {
+    ActivityCheckProgress();
+  }, [activities, taskdata]);
 
   return (
     <div>
@@ -172,6 +189,18 @@ const UserOpenTasks = () => {
               </div>
 
               <div className="table-responsive">
+                <div style={{ marginBottom: 20 }} class="progress">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style={{ width: progress.toString() + "%" }}
+                    aria-valuenow={progress}
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    {progress}%
+                  </div>
+                </div>
                 <table className="table table-hover text-nowrap">
                   <thead>
                     <tr>
@@ -200,7 +229,7 @@ const UserOpenTasks = () => {
                                 alignSelf: "center",
                               }}
                             >
-                              {activities.includes(e.name)}
+                              {/* {activities.includes(e.name)} */}
                               {activities.includes(e.name) === true ? (
                                 <span
                                   style={{ color: "green" }}

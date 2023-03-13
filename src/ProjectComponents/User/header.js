@@ -34,7 +34,7 @@ function Header() {
 
   useEffect(() => {
     CheckingAuth();
-  }, [data]);
+  }, []);
 
   const notificationData = [
     {

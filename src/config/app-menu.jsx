@@ -6,7 +6,7 @@ const Menu = [
   {
     path: "/staticpage",
     icon: "bi bi-bar-chart",
-    title: "Static page",
+    title: "Home page",
   },
 
   { is_divider: true },
@@ -26,7 +26,7 @@ const Menu = [
   {
     path: "/useropentasks",
     icon: "bi bi-bar-chart",
-    title: "All Exhibitors",
+    title: "Operations Form (All Exhbitiors)",
   },
   { is_divider: true },
 
@@ -53,7 +53,7 @@ const Menu = [
   {
     path: "/useropentasks3",
     icon: "bi bi-bar-chart",
-    title: "All Exhibitors",
+    title: "Operations Form (All Exhbitiors)",
   },
   { is_divider: true },
 
